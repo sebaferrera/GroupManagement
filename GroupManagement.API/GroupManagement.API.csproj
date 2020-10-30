@@ -4,5 +4,10 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\GroupManagement.Dto\GroupManagement.Dto.csproj" />
+    <ProjectReference Include="..\GroupManagement.Service\GroupManagement.Service.csproj" />
+  </ItemGroup>
+
 
 </Project>
