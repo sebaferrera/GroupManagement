@@ -5,6 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\GroupManagement.Contracts\GroupManagement.Contracts.csproj" />
     <ProjectReference Include="..\GroupManagement.Dto\GroupManagement.Dto.csproj" />
   </ItemGroup>
 
