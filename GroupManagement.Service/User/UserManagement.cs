@@ -1,8 +1,6 @@
 ﻿using GroupManagement.Contracts;
-using GroupManagement.Dto.User;
-using System;
+using GroupManagement.Models.User;
 using System.Collections.Generic;
-using System.Text;
 
 namespace GroupManagement.Service.User
 {
@@ -13,9 +11,25 @@ namespace GroupManagement.Service.User
 
         }
 
-        public void Add(UserData user)
+        public void Add(UserModel user)
         {
 
+        }
+
+        public IEnumerable<UserModel> GetAll()
+        {
+            var users = new List<UserModel>
+            {
+                new UserModel{ID = 1, Name="AA"},
+                new UserModel{ID = 2, Name="BB"},
+                new UserModel{ID = 3, Name="CC"}
+            };
+            return users;
+        }
+
+        public UserModel GetUserById(int id)
+        {
+            return new UserModel { ID = id, Name="Test" };
         }
     }
 }

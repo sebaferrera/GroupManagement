@@ -11,7 +11,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 
-namespace GroupManagement.API
+namespace GroupManagement.ApiREST
 {
     public class Startup
     {
@@ -26,7 +26,6 @@ namespace GroupManagement.API
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
-            services.AddScoped<GroupManagement.Contracts.IUserManagement, GroupManagement.Service.User.UserManagement>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -42,11 +41,10 @@ namespace GroupManagement.API
             app.UseRouting();
 
             app.UseAuthorization();
-            
+
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
-                endpoints.MapControllerRoute(name: "users", pattern: "{controller=Users}");
             });
         }
     }

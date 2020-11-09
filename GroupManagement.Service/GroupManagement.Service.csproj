@@ -6,7 +6,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\GroupManagement.Contracts\GroupManagement.Contracts.csproj" />
-    <ProjectReference Include="..\GroupManagement.Dto\GroupManagement.Dto.csproj" />
+    <ProjectReference Include="..\GroupManagement.Models\GroupManagement.Models.csproj" />
   </ItemGroup>
 
 </Project>

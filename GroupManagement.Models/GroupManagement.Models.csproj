@@ -4,8 +4,4 @@
     <TargetFramework>netstandard2.0</TargetFramework>
   </PropertyGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\GroupManagement.Models\GroupManagement.Models.csproj" />
-  </ItemGroup>
-
 </Project>
