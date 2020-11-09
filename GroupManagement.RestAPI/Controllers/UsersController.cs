@@ -11,10 +11,10 @@ namespace GroupManagement.RestAPI.Controllers
 {
     [ApiController]
     [Route("api/users")]
-    public class Users : Controller
+    public class UsersController : Controller
     {
         private readonly IUserManagement _userManagement;
-        public Users(IUserManagement userManagement)
+        public UsersController(IUserManagement userManagement)
         {
             _userManagement = userManagement;
         }

@@ -11,7 +11,7 @@ namespace GroupManagement.RestAPI.Controllers
 {
     [ApiController]
     [Route("api/entities")]
-    public class Entities : Controller
+    public class EntitiesController : Controller
     {
         [HttpGet]
         public IActionResult GetAll()
