@@ -17,6 +17,7 @@ using System.Reflection;
 using System.IO;
 using GroupManagement.Contracts;
 using GroupManagement.Service.Logger;
+using GroupManagement.Data;
 
 namespace GroupManagement.API
 {
