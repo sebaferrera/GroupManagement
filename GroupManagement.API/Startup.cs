@@ -15,6 +15,8 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 using System.Reflection;
 using System.IO;
+using GroupManagement.Contracts;
+using GroupManagement.Service.Logger;
 
 namespace GroupManagement.API
 {
@@ -50,6 +52,7 @@ namespace GroupManagement.API
                 c.IncludeXmlComments(xpath);
             });
 
+            services.AddSingleton<ILoggerService, LoggerService>();
 
             services.AddControllers();
         }

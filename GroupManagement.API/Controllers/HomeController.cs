@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using GroupManagement.Contracts;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -14,6 +15,12 @@ namespace GroupManagement.API.Controllers
     [ApiController]
     public class HomeController : ControllerBase
     {
+        private readonly ILoggerService _logger;
+        public HomeController(ILoggerService logger)
+        {
+            _logger = logger;
+        }
+
         /// <summary>
         /// Get a List of values
         /// </summary>
@@ -22,6 +29,7 @@ namespace GroupManagement.API.Controllers
         [HttpGet]
         public IEnumerable<string> Get()
         {
+            _logger.LogInfo("Accessed Get a list of values");
             return new string[] { "value1", "value2" };
         }
 
@@ -34,6 +42,7 @@ namespace GroupManagement.API.Controllers
         [HttpGet("{id}", Name = "Get")]
         public string Get(int id)
         {
+            _logger.LogInfo("Accessed Get a single value");
             return "value";
         }
 
