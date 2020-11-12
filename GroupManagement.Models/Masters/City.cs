@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
 
-namespace GroupManagement.Models.Masters
+namespace GroupManagement.Models
 {
     [Table("Cities")]
     public partial class City
