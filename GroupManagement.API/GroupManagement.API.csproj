@@ -18,6 +18,8 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="10.1.1" />
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="8.1.0" />
     <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="3.1.3" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="3.1.3" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="3.1.3" />
@@ -31,9 +33,10 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\GroupManagement.Contracts\GroupManagement.Contracts.csproj" />
     <ProjectReference Include="..\GroupManagement.Data\GroupManagement.Data.csproj" />
-    <ProjectReference Include="..\GroupManagement.Service\GroupManagement.Service.csproj" />
+    <ProjectReference Include="..\GroupManagement.DTOs\GroupManagement.DTOs.csproj" />
+    <ProjectReference Include="..\GroupManagement.Repositories\GroupManagement.Repositories.csproj" />
+    <ProjectReference Include="..\GroupManagement.Services\GroupManagement.Services.csproj" />
   </ItemGroup>
 
   <ItemGroup>

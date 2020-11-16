@@ -15,8 +15,11 @@ using Microsoft.OpenApi.Models;
 using System.Reflection;
 using System.IO;
 using GroupManagement.Contracts;
-using GroupManagement.Service.Logger;
 using GroupManagement.Data;
+using GroupManagement.API.Mappings;
+using AutoMapper;
+using GroupManagement.Repositories;
+using GroupManagement.Services;
 
 namespace GroupManagement.API
 {
@@ -44,7 +47,9 @@ namespace GroupManagement.API
                     .AllowAnyMethod()
                     .AllowAnyHeader());
             });
-            
+
+            services.AddAutoMapper(typeof(Maps));
+
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo 
@@ -59,7 +64,7 @@ namespace GroupManagement.API
                 c.IncludeXmlComments(xpath);
             });
 
-            services.AddSingleton<ILoggerService, LoggerService>();
+            RegisterAPIServices(services);
 
             services.AddControllers();
         }
@@ -98,6 +103,23 @@ namespace GroupManagement.API
             {
                 endpoints.MapControllers();
             });
+        }
+
+        private void RegisterAPIServices(IServiceCollection services)
+        {
+            #region Services
+            services.AddSingleton<ILoggerService, LoggerService>();
+            services.AddScoped<ICityService, CityService>();
+            services.AddScoped<ICountryService, CountryService>();
+            #endregion
+
+            #region Repositories
+            services.AddScoped<ICityRepository, CityRepository>();
+            services.AddScoped<ICountryRepository, CountryRepository>();
+            #endregion
+
+            
+            
         }
     }
 }

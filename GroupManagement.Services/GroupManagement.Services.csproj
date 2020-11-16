@@ -5,8 +5,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="10.1.1" />
+    <PackageReference Include="NLog" Version="4.7.5" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\GroupManagement.Contracts\GroupManagement.Contracts.csproj" />
     <ProjectReference Include="..\GroupManagement.DTOs\GroupManagement.DTOs.csproj" />
-    <ProjectReference Include="..\GroupManagement.Models\GroupManagement.Models.csproj" />
   </ItemGroup>
 
 </Project>

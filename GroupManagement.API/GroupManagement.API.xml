@@ -4,23 +4,36 @@
         <name>GroupManagement.API</name>
     </assembly>
     <members>
-        <member name="T:GroupManagement.API.Controllers.HomeController">
+        <member name="T:GroupManagement.API.Controllers.MasterController">
             <summary>
-            This is the Home Controller
+            Endpoint used to interact with the Master tables in the database
             </summary>
         </member>
-        <member name="M:GroupManagement.API.Controllers.HomeController.Get">
+        <member name="M:GroupManagement.API.Controllers.MasterController.GetCities">
             <summary>
-            Get a List of values
+            Get All Cities
             </summary>
-            <returns></returns>
+            <returns>List of Cities</returns>
         </member>
-        <member name="M:GroupManagement.API.Controllers.HomeController.Get(System.Int32)">
+        <member name="M:GroupManagement.API.Controllers.MasterController.GetCity(System.Int32)">
             <summary>
-            Gets a single value 
+            Get a city
             </summary>
             <param name="id"></param>
-            <returns></returns>
+            <returns>Single city</returns>
+        </member>
+        <member name="M:GroupManagement.API.Controllers.MasterController.GetCountries">
+            <summary>
+            Get All Countries
+            </summary>
+            <returns>List of Countries</returns>
+        </member>
+        <member name="M:GroupManagement.API.Controllers.MasterController.GetCountry(System.Int32)">
+            <summary>
+            Get a country
+            </summary>
+            <param name="id"></param>
+            <returns>Single country</returns>
         </member>
     </members>
 </doc>

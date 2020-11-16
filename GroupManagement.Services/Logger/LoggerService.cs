@@ -4,7 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace GroupManagement.Service.Logger
+namespace GroupManagement.Services
 {
     public class LoggerService : ILoggerService
     {
