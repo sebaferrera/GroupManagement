@@ -19,12 +19,12 @@ namespace GroupManagement.Repositories
         }
         public async Task<IList<City>> GetAll()
         {
-            var cities = await _db.Cities.ToListAsync();
+            var cities = await _db.Cities.Include(x => x.Country).AsNoTracking().ToListAsync();
             return cities;
         }
         public async Task<City> GetById(int id)
         {
-            var city = await _db.Cities.FindAsync(id);
+            var city = await _db.Cities.Where(x => x.ID == id).Include(x => x.Country).AsNoTracking().FirstOrDefaultAsync();
             return city;
         }
         public async Task<bool> Create(City city)

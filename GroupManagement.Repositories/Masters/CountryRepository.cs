@@ -4,6 +4,7 @@ using GroupManagement.Models;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -18,12 +19,12 @@ namespace GroupManagement.Repositories
         }
         public async Task<IList<Country>> GetAll()
         {
-            var countries = await _db.Countries.ToListAsync();
+            var countries = await _db.Countries.Include(x => x.Cities).ToListAsync();
             return countries;
         }
         public async Task<Country> GetById(int id)
         {
-            var country = await _db.Countries.FindAsync(id);
+            var country = await _db.Countries.Where(x => x.ID == id).Include(x => x.Cities).FirstOrDefaultAsync();
             return country;
         }
         public async Task<bool> Create(Country country)
