@@ -1,31 +1,30 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using GroupManagement.Contracts;
-using Microsoft.AspNetCore.Http;
+﻿using GroupManagement.Contracts;
 using Microsoft.AspNetCore.Mvc;
+using System;
+using System.Collections.Generic;
+using System.Text;
 
-namespace GroupManagement.API.Controllers
+namespace GroupManagement.Services
 {
-    public class BasicController : ControllerBase
+    public class ActionResultService : ControllerBase, IActionResultService
     {
         private readonly ILoggerService _logger;
-        public BasicController(ILoggerService logger)
+        public ActionResultService(ILoggerService logger)
         {
             _logger = logger;
         }
 
         public ObjectResult InternalError(Exception e)
         {
-            return InternalError($"{e.Message} - {e.InnerException}");
+            var message = $"{e.Message} - {e.InnerException}";
+            return InternalError(message);
         }
 
-        [ApiExplorerSettings(IgnoreApi = true)]
         public ObjectResult InternalError(string message)
         {
             _logger.LogError(message);
             return StatusCode(500, "Something went wrong. Please contact the Administrator");
         }
+
     }
 }

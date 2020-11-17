@@ -35,5 +35,12 @@
             <param name="id"></param>
             <returns>Single country</returns>
         </member>
+        <member name="M:GroupManagement.API.Controllers.UsersController.Login(GroupManagement.DTOs.UserDTO)">
+            <summary>
+            User Login EndPoint
+            </summary>
+            <param name="userDTO"></param>
+            <returns></returns>
+        </member>
     </members>
 </doc>

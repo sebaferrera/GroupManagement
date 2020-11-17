@@ -1,0 +1,15 @@
+2020-11-17 09:41:00.0868 ERROR Missing type map configuration or unsupported mapping.
+
+Mapping types:
+Object -> City
+System.Object -> GroupManagement.Models.City - 
+2020-11-17 09:41:24.2674 ERROR Missing type map configuration or unsupported mapping.
+
+Mapping types:
+Object -> City
+System.Object -> GroupManagement.Models.City - 
+2020-11-17 09:41:47.8154 ERROR Missing type map configuration or unsupported mapping.
+
+Mapping types:
+Object -> City
+System.Object -> GroupManagement.Models.City - 

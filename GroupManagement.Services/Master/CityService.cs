@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using GroupManagement.Contracts;
 using GroupManagement.DTOs;
+using GroupManagement.Models;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -29,6 +30,14 @@ namespace GroupManagement.Services
             var city = await _repo.GetById(id);
             var retValue = _mapper.Map<CityDTO>(city);
             return retValue;
+        }
+
+        public async Task<CityDTO> Create(CityCreateDTO cityToCreate)
+        {
+            var city = _mapper.Map<City>(cityToCreate);
+            var isSuccess = await _repo.Create(city);
+
+            return isSuccess ? await GetById(city.ID) : null;
         }
     }
 }

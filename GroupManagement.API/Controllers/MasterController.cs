@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using GroupManagement.Contracts;
+using GroupManagement.DTOs;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -14,19 +15,19 @@ namespace GroupManagement.API.Controllers
     [Route("api/[controller]")]
     [ApiController]
     [ProducesResponseType(StatusCodes.Status200OK)]
-    public class MasterController : BasicController
+    public class MasterController : ControllerBase
     {
-        private readonly ILoggerService _logger;
         private readonly ICityService _cityService;
         private readonly ICountryService _countryService;
+        private readonly IActionResultService _actionResultService;
         public MasterController(
-            ILoggerService logger,
             ICityService cityService,
-            ICountryService countryService) : base(logger)
+            ICountryService countryService,
+            IActionResultService actionResultService)
         {
-            _logger = logger;
             _cityService = cityService;
             _countryService = countryService;
+            _actionResultService = actionResultService;
         }
 
         /// <summary>
@@ -51,7 +52,7 @@ namespace GroupManagement.API.Controllers
             }
             catch (Exception e) 
             {
-                return InternalError(e);
+                return _actionResultService.InternalError(e);
             }
         }
 
@@ -78,7 +79,39 @@ namespace GroupManagement.API.Controllers
             }
             catch (Exception e)
             {
-                return InternalError(e);
+                return _actionResultService.InternalError(e);
+            }
+        }
+
+        [HttpPost]
+        [Route("city")]
+        [ProducesResponseType(StatusCodes.Status201Created)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        public async Task<IActionResult> CreateCity([FromBody] CityCreateDTO city)
+        {
+            var location = GetControllerActionNames();
+            try
+            {
+                if (city == null)
+                {
+                    return BadRequest(ModelState);
+                }
+                if (!ModelState.IsValid)
+                {
+                    return BadRequest(ModelState);
+                }
+
+                var created = await _cityService.Create(city);
+                if (created == null)
+                {
+                    return _actionResultService.InternalError($"{location}: Creation failed");
+                }
+                
+                return Created("Create", new { created });
+            }
+            catch (Exception e)
+            {
+                return _actionResultService.InternalError(e);
             }
         }
 
@@ -104,7 +137,7 @@ namespace GroupManagement.API.Controllers
             }
             catch (Exception e)
             {
-                return InternalError(e);
+                return _actionResultService.InternalError(e);
             }
         }
 
@@ -131,8 +164,17 @@ namespace GroupManagement.API.Controllers
             }
             catch (Exception e)
             {
-                return InternalError(e);
+                return _actionResultService.InternalError(e);
             }
         }
+
+        private string GetControllerActionNames()
+        {
+            var controller = ControllerContext.ActionDescriptor.ControllerName;
+            var action = ControllerContext.ActionDescriptor.ActionName;
+
+            return $"{controller} - {action}";
+        }
+
     }
 }

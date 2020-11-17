@@ -8,5 +8,6 @@ namespace GroupManagement.Contracts
     {
         Task<IList<CityDTO>> GetAll();
         Task<CityDTO> GetById(int id);
+        Task<CityDTO> Create(CityCreateDTO cityToCreate);
     }
 }

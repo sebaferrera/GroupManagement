@@ -13,6 +13,7 @@ namespace GroupManagement.API.Mappings
         public Maps()
         {
             CreateMap<City, CityDTO>().ReverseMap();
+            CreateMap<City, CityCreateDTO>().ReverseMap();
             CreateMap<Country, CountryDTO>().ReverseMap();
         }
     }

@@ -113,6 +113,7 @@ namespace GroupManagement.API
         {
             #region Services
             services.AddSingleton<ILoggerService, LoggerService>();
+            services.AddScoped<IActionResultService, ActionResultService>();
             services.AddScoped<ICityService, CityService>();
             services.AddScoped<ICountryService, CountryService>();
             #endregion
