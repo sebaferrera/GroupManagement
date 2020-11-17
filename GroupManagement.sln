@@ -9,7 +9,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Vue App", "Vue App", "{56CE
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "API", "API", "{3666560C-C66B-4507-88AA-5BEE9094BA88}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastructure", "{407AAEA4-9AAF-4D7B-8F76-AEFF5DB179E4}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Domain", "Domain", "{407AAEA4-9AAF-4D7B-8F76-AEFF5DB179E4}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GroupManagement.API", "GroupManagement.API\GroupManagement.API.csproj", "{939FD3AE-1411-4E37-8F13-9E1EBDB031FE}"
 EndProject
@@ -23,9 +23,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GroupManagement.Repositorie
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GroupManagement.Services", "GroupManagement.Services\GroupManagement.Services.csproj", "{3D07B756-725E-442E-9A22-17177A45BD59}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GroupManagement.Models", "GroupManagement.Models\GroupManagement.Models.csproj", "{481B87A5-E07C-4F88-840C-847051A721E1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GroupManagement.Models", "GroupManagement.Models\GroupManagement.Models.csproj", "{481B87A5-E07C-4F88-840C-847051A721E1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GroupManagement.Contracts", "GroupManagement.Contracts\GroupManagement.Contracts.csproj", "{1459E067-E3C7-4B97-9AD5-30B2C71394FF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GroupManagement.Contracts", "GroupManagement.Contracts\GroupManagement.Contracts.csproj", "{1459E067-E3C7-4B97-9AD5-30B2C71394FF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
