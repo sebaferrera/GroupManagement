@@ -22,7 +22,7 @@ namespace GroupManagement.Services
 
         public ObjectResult InternalError(string message)
         {
-            _logger.LogError(message);
+            _logger.Error(message);
             return StatusCode(500, "Something went wrong. Please contact the Administrator");
         }
 

@@ -20,6 +20,9 @@ using GroupManagement.API.Mappings;
 using AutoMapper;
 using GroupManagement.Repositories;
 using GroupManagement.Services;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
 
 namespace GroupManagement.API
 {
@@ -50,6 +53,20 @@ namespace GroupManagement.API
             });
 
             services.AddAutoMapper(typeof(Maps));
+            services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+                .AddJwtBearer(o =>
+                {
+                    o.TokenValidationParameters = new TokenValidationParameters
+                    {
+                        ValidateIssuer = true,
+                        ValidateAudience = true,
+                        ValidateIssuerSigningKey = true,
+                        ValidIssuer = Configuration["Jwt:Issuer"],
+                        ValidAudience = Configuration["Jwt:Issuer"],
+                        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Configuration["Jwt:Key"]))
+                    };
+                });
+
 
             services.AddSwaggerGen(c =>
             {
@@ -116,6 +133,7 @@ namespace GroupManagement.API
             services.AddScoped<IActionResultService, ActionResultService>();
             services.AddScoped<ICityService, CityService>();
             services.AddScoped<ICountryService, CountryService>();
+            services.AddScoped<IUserService, UserService>();
             #endregion
 
             #region Repositories

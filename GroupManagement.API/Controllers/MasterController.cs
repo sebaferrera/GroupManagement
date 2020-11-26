@@ -20,14 +20,17 @@ namespace GroupManagement.API.Controllers
         private readonly ICityService _cityService;
         private readonly ICountryService _countryService;
         private readonly IActionResultService _actionResultService;
+        private readonly ILoggerService _logger;
         public MasterController(
             ICityService cityService,
             ICountryService countryService,
-            IActionResultService actionResultService)
+            IActionResultService actionResultService,
+            ILoggerService logger)
         {
             _cityService = cityService;
             _countryService = countryService;
             _actionResultService = actionResultService;
+            _logger = logger;
         }
 
         /// <summary>
@@ -94,10 +97,12 @@ namespace GroupManagement.API.Controllers
             {
                 if (city == null)
                 {
+                    _logger.Warning($"{location}: Empty request was submitted");
                     return BadRequest(ModelState);
                 }
                 if (!ModelState.IsValid)
                 {
+                    _logger.Warning($"{location}: Data was Incomplete");
                     return BadRequest(ModelState);
                 }
 
@@ -106,7 +111,7 @@ namespace GroupManagement.API.Controllers
                 {
                     return _actionResultService.InternalError($"{location}: Creation failed");
                 }
-                
+                _logger.Info($"City with ID: {created.ID} created");
                 return Created("Create", new { created });
             }
             catch (Exception e)

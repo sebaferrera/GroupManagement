@@ -15,13 +15,14 @@ namespace GroupManagement.API.Controllers
     [ApiController]
     public class UsersController : ControllerBase
     {
-        private readonly SignInManager<IdentityUser> _signInManager;
-        private readonly UserManager<IdentityUser> _userManager;
-
-        public UsersController(SignInManager<IdentityUser> signInManager, UserManager<IdentityUser> userManager)
+        private readonly IUserService _userService;
+        private readonly ILoggerService _logger;
+        private readonly IActionResultService _actionResultService;
+        public UsersController(IUserService userService, ILoggerService logger, IActionResultService actionResultService)
         {
-            _signInManager = signInManager;
-            _userManager = userManager;
+            _userService = userService;
+            _logger = logger;
+            _actionResultService = actionResultService;
         }
 
         /// <summary>
@@ -31,16 +32,34 @@ namespace GroupManagement.API.Controllers
         /// <returns></returns>
         [AllowAnonymous]
         [HttpPost]
+        [Route("login")]
         public async Task<IActionResult> Login([FromBody] UserDTO userDTO)
         {
-            var result = await _signInManager.PasswordSignInAsync(userDTO.UserName, userDTO.Password, false, false);
-            if (result != null)
+            try
             {
-                var user = await _userManager.FindByNameAsync(userDTO.UserName);
-                return Ok(user);
+                var location = GetControllerActionNames();
+                _logger.Info($"{location}: Loggin attempt from user {userDTO.UserName}");
+                var result = await _userService.LogIn(userDTO);
+                if (result.LoggedIn)
+                {
+                    _logger.Info($"{location}: {userDTO.UserName} successfully authenticated");
+                    return Ok(result);
+                }
+                _logger.Info($"{location}: {userDTO.UserName} not authenticated");
+                return Unauthorized(userDTO);
             }
+            catch (Exception e)
+            {
+                return _actionResultService.InternalError(e);
+            }
+        }
 
-            return Unauthorized(userDTO);
+        private string GetControllerActionNames()
+        {
+            var controller = ControllerContext.ActionDescriptor.ControllerName;
+            var action = ControllerContext.ActionDescriptor.ActionName;
+
+            return $"{controller} - {action}";
         }
     }
 }

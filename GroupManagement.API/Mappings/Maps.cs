@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using GroupManagement.DTOs;
 using GroupManagement.Models;
+using Microsoft.AspNetCore.Identity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,6 +16,7 @@ namespace GroupManagement.API.Mappings
             CreateMap<City, CityDTO>().ReverseMap();
             CreateMap<City, CityCreateDTO>().ReverseMap();
             CreateMap<Country, CountryDTO>().ReverseMap();
+            CreateMap<IdentityUser, UserLoggedInDTO>();
         }
     }
 }
