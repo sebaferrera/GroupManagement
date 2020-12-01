@@ -30,15 +30,35 @@ namespace GroupManagement.Services
         public async Task<UserLoggedInDTO> LogIn(UserDTO loginInfo)
         {
             var result = new UserLoggedInDTO();
-            var check = await _signInManager.PasswordSignInAsync(loginInfo.UserName, loginInfo.Password, false, false);
+            var check = await _signInManager.PasswordSignInAsync(loginInfo.EmailAddress, loginInfo.Password, false, false);
             if (check.Succeeded)
             {
-                var user = await _userManager.FindByNameAsync(loginInfo.UserName);
+                var user = await _userManager.FindByNameAsync(loginInfo.EmailAddress);
                 result = _mapper.Map<UserLoggedInDTO>(user);
                 result.LoggedIn = true;
                 result.Token = await GenerateJsonWebToken(user);
             }
             return result;
+        }
+
+        public async Task<UserRegistrationResultDTO> Register(UserDTO userInfo)
+        {
+            
+            var newUser = new IdentityUser { Email = userInfo.EmailAddress, UserName = userInfo.EmailAddress };
+            var result = await _userManager.CreateAsync(newUser, userInfo.Password);
+            var user = new UserRegistrationResultDTO();
+            if (!result.Succeeded)
+            {
+                user.RegistrationErrors = new List<string>();
+                foreach (var error in result.Errors)
+                {
+                    user.RegistrationErrors.Add($"{error.Code} - {error.Description}");
+                }
+                return user;
+            }
+            var created = await _userManager.FindByNameAsync(userInfo.EmailAddress);
+            user = _mapper.Map<UserRegistrationResultDTO>(created);
+            return user;
         }
 
         private async Task<string> GenerateJsonWebToken(IdentityUser user)

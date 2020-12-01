@@ -1,31 +1,27 @@
-﻿using Microsoft.AspNetCore.Identity;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
-using System.Text;
-using System.Text.Json.Serialization;
+using System.Threading.Tasks;
 
-namespace GroupManagement.DTOs
+namespace GroupManagement.BlazorUI.Model
 {
-    public class UserDTO
+    public class RegistrationModel
     {
         [Required]
         [EmailAddress]
+        [Display(Name = "Email Address")]
         public string EmailAddress { get; set; }
         [Required]
         [DataType(DataType.Password)]
         [StringLength(15, ErrorMessage = "Your password is limited to {2} to {1} characters.", MinimumLength = 6)]
         public string Password { get; set; }
-    }
+        [Required]
+        [DataType(DataType.Password)]
+        [Display(Name = "Confirm Password")]
+        [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
+        public string ConfirmPassword { get; set; }
 
-    public class UserLoggedInDTO
-    {
-        public string Id { get; set; }
-        public string UserName { get; set; }
-        public string Email { get; set; }
-        public bool LoggedIn { get; set; }
-        public string Token { get; set; }
     }
 
     public class UserRegistrationResultDTO
@@ -33,9 +29,12 @@ namespace GroupManagement.DTOs
         public string Id { get; set; }
         public string UserName { get; set; }
         public string Email { get; set; }
-        [JsonIgnore]
         public IList<string> RegistrationErrors { get; set; }
-        [JsonIgnore]
-        public bool HasRegistrationErrors => RegistrationErrors == null ? false : RegistrationErrors.Any();
+        public bool HasRegistrationErrors { get; set; }
+    }
+
+    public class LoginModel
+    {
+
     }
 }

@@ -42,5 +42,12 @@
             <param name="userDTO"></param>
             <returns></returns>
         </member>
+        <member name="M:GroupManagement.API.Controllers.UsersController.Register(GroupManagement.DTOs.UserDTO)">
+            <summary>
+            User Registration EndPoint
+            </summary>
+            <param name="userDTO"></param>
+            <returns></returns>
+        </member>
     </members>
 </doc>

@@ -33,20 +33,63 @@ namespace GroupManagement.API.Controllers
         [AllowAnonymous]
         [HttpPost]
         [Route("login")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<IActionResult> Login([FromBody] UserDTO userDTO)
         {
+            var location = GetControllerActionNames();
             try
             {
-                var location = GetControllerActionNames();
-                _logger.Info($"{location}: Loggin attempt from user {userDTO.UserName}");
+                _logger.Info($"{location}: Loggin attempt from user {userDTO.EmailAddress}");
                 var result = await _userService.LogIn(userDTO);
                 if (result.LoggedIn)
                 {
-                    _logger.Info($"{location}: {userDTO.UserName} successfully authenticated");
+                    _logger.Info($"{location}: {userDTO.EmailAddress} successfully authenticated");
                     return Ok(result);
                 }
-                _logger.Info($"{location}: {userDTO.UserName} not authenticated");
+                _logger.Info($"{location}: {userDTO.EmailAddress} not authenticated");
                 return Unauthorized(userDTO);
+            }
+            catch (Exception e)
+            {
+                return _actionResultService.InternalError(e);
+            }
+        }
+
+        /// <summary>
+        /// User Registration EndPoint
+        /// </summary>
+        /// <param name="userDTO"></param>
+        /// <returns></returns>
+        [AllowAnonymous]
+        [HttpPost]
+        [Route("register")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        public async Task<IActionResult> Register([FromBody] UserDTO userDTO)
+        {
+            var location = GetControllerActionNames();
+            try
+            {
+                _logger.Info($"{location}: Registration attempt from user {userDTO.EmailAddress}");
+                if (!ModelState.IsValid)
+                {
+                    _logger.Warning($"{location}: Data was Incomplete");
+                    return BadRequest(ModelState);
+                }
+                var user = await _userService.Register(userDTO);
+                if (user.HasRegistrationErrors)
+                {
+                    foreach (var error in user.RegistrationErrors)
+                    {
+                        _logger.Error($"{location}: {error}");
+                    }
+                    return BadRequest(user);
+                }
+
+                return Ok(user);
             }
             catch (Exception e)
             {

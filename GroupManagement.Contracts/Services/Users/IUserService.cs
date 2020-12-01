@@ -9,5 +9,6 @@ namespace GroupManagement.Contracts
     public interface IUserService
     {
         Task<UserLoggedInDTO> LogIn(UserDTO user);
+        Task<UserRegistrationResultDTO> Register(UserDTO userInfo);
     }
 }
