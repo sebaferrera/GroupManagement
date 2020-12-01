@@ -16,7 +16,7 @@ namespace GroupManagement.API.Controllers
     /// </summary>
     [Route("api/[controller]")]
     [ApiController]
-    [ProducesResponseType(StatusCodes.Status200OK)]
+    [Authorize]
     public class MasterController : ControllerBase
     {
         private readonly ICityService _cityService;
