@@ -7,6 +7,7 @@ namespace GroupManagement.Contracts
     {
         Task<IList<T>> GetAll();
         Task<T> GetById(int id);
+        Task<bool> Exists(int id);
         Task<bool> Create(T entity);
         Task<bool> Update(T entity);
         Task<bool> Delete(T entity);

@@ -47,5 +47,10 @@ namespace GroupManagement.Repositories
             var changes = await _db.SaveChangesAsync();
             return changes > 0;
         }
+
+        public async Task<bool> Exists(int id)
+        {
+            return await _db.Countries.AnyAsync(q => q.ID == id);
+        }
     }
 }

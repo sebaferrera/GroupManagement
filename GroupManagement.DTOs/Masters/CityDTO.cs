@@ -16,6 +16,17 @@ namespace GroupManagement.DTOs
 
     public class CityCreateDTO
     {
+        [Required]
+        [StringLength(200)]
+        public string Name { get; set; }
+        [StringLength(3)]
+        public string IATACode { get; set; }
+        [Required]
+        public int? CountryID { get; set; }
+    }
+
+    public class CityUpdateDTO
+    {
         [StringLength(200)]
         public string Name { get; set; }
         [StringLength(3)]

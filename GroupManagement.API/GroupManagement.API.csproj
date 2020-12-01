@@ -28,6 +28,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\GroupManagement.Common\GroupManagement.Common.csproj" />
     <ProjectReference Include="..\GroupManagement.Data\GroupManagement.Data.csproj" />
     <ProjectReference Include="..\GroupManagement.DTOs\GroupManagement.DTOs.csproj" />
     <ProjectReference Include="..\GroupManagement.Repositories\GroupManagement.Repositories.csproj" />

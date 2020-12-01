@@ -39,5 +39,24 @@ namespace GroupManagement.Services
 
             return isSuccess ? await GetById(city.ID) : null;
         }
+
+        public async Task<CityDTO> Update(CityUpdateDTO cityToUpdate)
+        {
+            var city = _mapper.Map<City>(cityToUpdate);
+            var isSuccess = await _repo.Update(city);
+
+            return isSuccess ? await GetById(city.ID) : null;
+        }
+
+        public async Task<bool> Exists(int id)
+        {
+            return await _repo.Exists(id);
+        }
+
+        public async Task<bool> Delete(int id)
+        {
+            var city = await _repo.GetById(id);
+            return await _repo.Delete(city);
+        }
     }
 }

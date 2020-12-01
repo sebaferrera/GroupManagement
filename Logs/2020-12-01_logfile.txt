@@ -1,0 +1,6 @@
+2020-12-01 09:14:29.7860 INFO Users - Login: Loggin attempt from user user1
+2020-12-01 09:14:30.1348 INFO Users - Login: user1 successfully authenticated
+2020-12-01 09:15:54.0664 INFO Users - Login: Loggin attempt from user user1
+2020-12-01 09:15:54.3315 INFO Users - Login: user1 successfully authenticated
+2020-12-01 09:16:28.6005 INFO Users - Login: Loggin attempt from user user1
+2020-12-01 09:16:28.9109 INFO Users - Login: user1 successfully authenticated

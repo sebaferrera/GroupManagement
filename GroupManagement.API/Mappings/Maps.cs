@@ -15,7 +15,10 @@ namespace GroupManagement.API.Mappings
         {
             CreateMap<City, CityDTO>().ReverseMap();
             CreateMap<City, CityCreateDTO>().ReverseMap();
+            CreateMap<City, CityUpdateDTO>().ReverseMap();
             CreateMap<Country, CountryDTO>().ReverseMap();
+            CreateMap<City, CountryCreateDTO>().ReverseMap();
+            CreateMap<City, CountryUpdateDTO>().ReverseMap();
             CreateMap<IdentityUser, UserLoggedInDTO>();
         }
     }
