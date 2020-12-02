@@ -8,3 +8,5 @@
 2020-12-02 13:25:22.4721 INFO Users - Login: sferrerafv1@gmail.com successfully authenticated
 2020-12-02 13:25:37.4254 INFO Users - Login: Loggin attempt from user sferrerafv1@gmail.com
 2020-12-02 13:25:37.4648 INFO Users - Login: sferrerafv1@gmail.com successfully authenticated
+2020-12-02 13:30:14.5205 INFO Users - Login: Loggin attempt from user sferrerafv1@gmail.com
+2020-12-02 13:30:14.6448 INFO Users - Login: sferrerafv1@gmail.com not authenticated
