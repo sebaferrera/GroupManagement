@@ -35,6 +35,17 @@ namespace GroupManagement.BlazorUI.Model
 
     public class LoginModel
     {
+        [Required]
+        [EmailAddress]
+        [Display(Name = "Email Address")]
+        public string EmailAddress { get; set; }
+        [Required]
+        [DataType(DataType.Password)]
+        public string Password { get; set; }
+    }
 
+    public class TokenResponse
+    {
+        public string Token { get; set; }
     }
 }

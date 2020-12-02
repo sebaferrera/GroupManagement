@@ -49,7 +49,7 @@ namespace GroupManagement.API.Controllers
                     return Ok(result);
                 }
                 _logger.Info($"{location}: {userDTO.EmailAddress} not authenticated");
-                return Unauthorized(userDTO);
+                return Unauthorized(result);
             }
             catch (Exception e)
             {

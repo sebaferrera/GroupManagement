@@ -1,0 +1,10 @@
+2020-12-02 13:20:24.5351 INFO Users - Login: Loggin attempt from user sferrerafv1@gmail.com
+2020-12-02 13:20:24.8564 INFO Users - Login: sferrerafv1@gmail.com successfully authenticated
+2020-12-02 13:21:13.1816 INFO Users - Login: Loggin attempt from user sferrerafv1@gmail.com
+2020-12-02 13:21:13.2903 INFO Users - Login: sferrerafv1@gmail.com successfully authenticated
+2020-12-02 13:21:34.7144 INFO Users - Login: Loggin attempt from user sferrerafv1@gmail.com
+2020-12-02 13:21:34.7625 INFO Users - Login: sferrerafv1@gmail.com successfully authenticated
+2020-12-02 13:25:22.4227 INFO Users - Login: Loggin attempt from user sferrerafv1@gmail.com
+2020-12-02 13:25:22.4721 INFO Users - Login: sferrerafv1@gmail.com successfully authenticated
+2020-12-02 13:25:37.4254 INFO Users - Login: Loggin attempt from user sferrerafv1@gmail.com
+2020-12-02 13:25:37.4648 INFO Users - Login: sferrerafv1@gmail.com successfully authenticated

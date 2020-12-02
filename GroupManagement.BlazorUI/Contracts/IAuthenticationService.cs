@@ -9,5 +9,7 @@ namespace GroupManagement.BlazorUI.Contracts
     public interface IAuthenticationService
     {
         public Task<UserRegistrationResultDTO> Register(RegistrationModel user);
+        public Task<bool> Login(LoginModel user);
+        public Task Logout();
     }
 }

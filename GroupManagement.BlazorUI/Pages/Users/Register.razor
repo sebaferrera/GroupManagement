@@ -3,7 +3,7 @@
 @using GroupManagement.BlazorUI.Contracts
 
 @inject IAuthenticationService _authService
-@inject NavigationManager _navMan;
+@inject NavigationManager _navManager;
 
     <div class="card">
         <h3 class="card-title">Register Now</h3>
@@ -52,7 +52,7 @@
         
         if (!AuthResult.HasRegistrationErrors)
         {
-            _navMan.NavigateTo("/");
+            _navManager.NavigateTo("/login");
         }
         else
         {

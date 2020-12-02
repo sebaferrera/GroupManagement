@@ -35,9 +35,9 @@ namespace GroupManagement.Services
             {
                 var user = await _userManager.FindByNameAsync(loginInfo.EmailAddress);
                 result = _mapper.Map<UserLoggedInDTO>(user);
-                result.LoggedIn = true;
                 result.Token = await GenerateJsonWebToken(user);
             }
+            result.LoggedIn = check.Succeeded;
             return result;
         }
 

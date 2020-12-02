@@ -12,6 +12,10 @@ using Microsoft.Extensions.Hosting;
 using GroupManagement.BlazorUI.Data;
 using GroupManagement.BlazorUI.Contracts;
 using GroupManagement.BlazorUI.Service;
+using Blazored.LocalStorage;
+using System.IdentityModel.Tokens.Jwt;
+using GroupManagement.BlazorUI.Providers;
+using Microsoft.AspNetCore.Components.Authorization;
 
 namespace GroupManagement.BlazorUI
 {
@@ -30,7 +34,12 @@ namespace GroupManagement.BlazorUI
         {
             services.AddRazorPages();
             services.AddServerSideBlazor();
+            services.AddBlazoredLocalStorage();
             services.AddHttpClient();
+            services.AddScoped<ApiAuthenticationStateProvider>();
+            services.AddScoped<AuthenticationStateProvider>(p => 
+                p.GetRequiredService<ApiAuthenticationStateProvider>());
+            services.AddScoped<JwtSecurityTokenHandler>();
             services.AddTransient<IAuthenticationService, AuthenticationService>();
         }
 
