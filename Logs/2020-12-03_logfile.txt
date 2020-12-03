@@ -1,0 +1,24 @@
+2020-12-03 15:18:20.3789 INFO Users - Login: Loggin attempt from user admin@groupmanager.com
+2020-12-03 15:18:20.4618 INFO Users - Login: admin@groupmanager.com not authenticated
+2020-12-03 15:18:44.1018 INFO Users - Login: Loggin attempt from user admin@groupmanager.com
+2020-12-03 15:18:44.1238 INFO Users - Login: admin@groupmanager.com not authenticated
+2020-12-03 15:19:04.5487 INFO Users - Login: Loggin attempt from user admin@groupmanager.com
+2020-12-03 15:20:53.8791 ERROR Object reference not set to an instance of an object. - 
+2020-12-03 15:22:36.0357 INFO Users - Login: Loggin attempt from user sferrerafv1@gmail.com
+2020-12-03 15:22:36.1609 INFO Users - Login: sferrerafv1@gmail.com not authenticated
+2020-12-03 15:22:52.2245 INFO Users - Login: Loggin attempt from user sferrera@gmail.com
+2020-12-03 15:22:52.4378 INFO Users - Login: sferrera@gmail.com successfully authenticated
+2020-12-03 15:25:17.0326 INFO Users - Login: Loggin attempt from user sferrera@gmail.com
+2020-12-03 15:25:17.0629 INFO Users - Login: sferrera@gmail.com not authenticated
+2020-12-03 15:25:22.5185 INFO Users - Login: Loggin attempt from user sferrera@gmail.com
+2020-12-03 15:25:22.5726 INFO Users - Login: sferrera@gmail.com successfully authenticated
+2020-12-03 15:25:40.7490 INFO Users - Login: Loggin attempt from user sferrera1@gmail.com
+2020-12-03 15:25:40.7628 INFO Users - Login: sferrera1@gmail.com not authenticated
+2020-12-03 15:25:53.2577 INFO Users - Login: Loggin attempt from user sferrera1@gmail.com
+2020-12-03 15:25:53.2714 INFO Users - Login: sferrera1@gmail.com not authenticated
+2020-12-03 15:25:54.6949 INFO Users - Login: Loggin attempt from user sferrera1@gmail.com
+2020-12-03 15:25:54.7117 INFO Users - Login: sferrera1@gmail.com not authenticated
+2020-12-03 15:28:02.9443 INFO Users - Login: Loggin attempt from user admin@groupmanager.com
+2020-12-03 15:28:03.1982 INFO Users - Login: admin@groupmanager.com successfully authenticated
+2020-12-03 15:29:00.6675 INFO Users - Login: Loggin attempt from user user1@gmail.com
+2020-12-03 15:29:00.7179 INFO Users - Login: user1@gmail.com successfully authenticated
